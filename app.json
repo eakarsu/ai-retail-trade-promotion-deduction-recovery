@@ -1,0 +1,1293 @@
+{
+  "id": "ai-retail-trade-promotion-deduction-recovery",
+  "title": "Trade Promotion Recovery Studio",
+  "tagline": "Promotion planning, proof-of-performance, deduction validation, and recovery",
+  "industry": "Consumer Goods Revenue Management",
+  "port": 4518,
+  "accent": "#b45309",
+  "valueLabel": "Deductions recoverable",
+  "value": "$5.5M",
+  "workflows": [
+    {
+      "id": "promotion",
+      "title": "Promotion Contract Intake",
+      "description": "Structure promotional terms, products, stores, dates, funding, and performance conditions.",
+      "fields": [
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "funding",
+          "label": "Planned Funding",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "retailer": "Retailer STD-2026-104",
+            "promotion": "Promotion STD-2026-104",
+            "startDate": "2026-09-08",
+            "funding": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "retailer": "Retailer RISK-2026-227",
+            "promotion": "Promotion RISK-2026-227",
+            "startDate": "2026-08-19",
+            "funding": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "retailer": "Retailer EXC-2026-319",
+            "promotion": "Promotion EXC-2026-319",
+            "startDate": "2026-08-10",
+            "funding": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "accrual",
+      "title": "Trade Accrual Validation",
+      "description": "Compare planned funding, shipments, sell-through, claims, and accrued liability.",
+      "fields": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "period",
+          "label": "Period",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "accruedAmount",
+          "label": "Accrued Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "expectedAmount",
+          "label": "Expected Amount",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "promotion": "Promotion STD-2026-104",
+            "period": "Period STD-2026-104",
+            "accruedAmount": 285000,
+            "expectedAmount": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "promotion": "Promotion RISK-2026-227",
+            "period": "Period RISK-2026-227",
+            "accruedAmount": 875000,
+            "expectedAmount": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "promotion": "Promotion EXC-2026-319",
+            "period": "Period EXC-2026-319",
+            "accruedAmount": 142500,
+            "expectedAmount": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "deduction",
+      "title": "Retail Deduction Validation",
+      "description": "Validate reason, contract terms, invoice references, timing, and duplicate claims.",
+      "fields": [
+        {
+          "key": "deductionId",
+          "label": "Deduction ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "reasonCode",
+          "label": "Reason Code",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "deductionAmount",
+          "label": "Deduction Amount",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "deductionId": "Deduction ID STD-2026-104",
+            "retailer": "Retailer STD-2026-104",
+            "reasonCode": "Reason Code STD-2026-104",
+            "deductionAmount": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "deductionId": "Deduction ID RISK-2026-227",
+            "retailer": "Retailer RISK-2026-227",
+            "reasonCode": "Reason Code RISK-2026-227",
+            "deductionAmount": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "deductionId": "Deduction ID EXC-2026-319",
+            "retailer": "Retailer EXC-2026-319",
+            "reasonCode": "Reason Code EXC-2026-319",
+            "deductionAmount": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "title": "Proof-of-Performance Review",
+      "description": "Evaluate ads, displays, pricing, store execution, and sales evidence.",
+      "fields": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "evidenceType",
+          "label": "Evidence Type",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Advertisement",
+            "Display",
+            "Price",
+            "POS sales"
+          ]
+        },
+        {
+          "key": "storeCount",
+          "label": "Store Count",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "evidenceNotes",
+          "label": "Evidence Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "promotion": "Promotion STD-2026-104",
+            "evidenceType": "Display",
+            "storeCount": 125,
+            "evidenceNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "promotion": "Promotion RISK-2026-227",
+            "evidenceType": "Display",
+            "storeCount": 975,
+            "evidenceNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "promotion": "Promotion EXC-2026-319",
+            "evidenceType": "Display",
+            "storeCount": 41,
+            "evidenceNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "claim",
+      "title": "Invalid Deduction Claim",
+      "description": "Build a concise recovery claim with contract and performance evidence.",
+      "fields": [
+        {
+          "key": "deductionId",
+          "label": "Deduction ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "invalidAmount",
+          "label": "Invalid Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "claimBasis",
+          "label": "Claim Basis",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "responseDue",
+          "label": "Response Due",
+          "type": "date",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "deductionId": "Deduction ID STD-2026-104",
+            "invalidAmount": 285000,
+            "claimBasis": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis.",
+            "responseDue": "2026-09-08"
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "deductionId": "Deduction ID RISK-2026-227",
+            "invalidAmount": 875000,
+            "claimBasis": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis.",
+            "responseDue": "2026-08-19"
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "deductionId": "Deduction ID EXC-2026-319",
+            "invalidAmount": 142500,
+            "claimBasis": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis.",
+            "responseDue": "2026-08-10"
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "forecast",
+      "title": "Promotion ROI Forecast",
+      "description": "Forecast baseline, lift, margin, funding, cannibalization, and net ROI.",
+      "fields": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "baselineSales",
+          "label": "Baseline Sales",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "expectedLift",
+          "label": "Expected Lift %",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "funding",
+          "label": "Funding",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "promotion": "Promotion STD-2026-104",
+            "baselineSales": 285000,
+            "expectedLift": 125,
+            "funding": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "promotion": "Promotion RISK-2026-227",
+            "baselineSales": 875000,
+            "expectedLift": 975,
+            "funding": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "promotion": "Promotion EXC-2026-319",
+            "baselineSales": 142500,
+            "expectedLift": 41,
+            "funding": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "settlement",
+      "title": "Retailer Settlement",
+      "description": "Track submitted claims, responses, credits, short pays, and settlement realization.",
+      "fields": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "claimedAmount",
+          "label": "Claimed Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "settledAmount",
+          "label": "Settled Amount",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "claimId": "CLM-2026-001842",
+            "retailer": "Retailer STD-2026-104",
+            "claimedAmount": 285000,
+            "settledAmount": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "claimId": "CLM-2026-004917",
+            "retailer": "Retailer RISK-2026-227",
+            "claimedAmount": 875000,
+            "settledAmount": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "claimId": "CLM-2026-007305",
+            "retailer": "Retailer EXC-2026-319",
+            "claimedAmount": 142500,
+            "settledAmount": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "post-event",
+      "title": "Post-Event Effectiveness",
+      "description": "Compare forecast and actual performance and recommend future investment changes.",
+      "fields": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "actualSales",
+          "label": "Actual Sales",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "actualSpend",
+          "label": "Actual Spend",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "learning",
+          "label": "Commercial Learning",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "promotion": "Promotion STD-2026-104",
+            "actualSales": 285000,
+            "actualSpend": 285000,
+            "learning": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "promotion": "Promotion RISK-2026-227",
+            "actualSales": 875000,
+            "actualSpend": 875000,
+            "learning": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "promotion": "Promotion EXC-2026-319",
+            "actualSales": 142500,
+            "actualSpend": 142500,
+            "learning": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "id": "promotion",
+      "title": "Promotion Contract Intake Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for promotion contract intake.",
+      "table": "op_promotion",
+      "columns": [
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_retailer"
+        },
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_promotion"
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_startDate"
+        },
+        {
+          "key": "funding",
+          "label": "Planned Funding",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_funding"
+        }
+      ]
+    },
+    {
+      "id": "accrual",
+      "title": "Trade Accrual Validation Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for trade accrual validation.",
+      "table": "op_accrual",
+      "columns": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_promotion"
+        },
+        {
+          "key": "period",
+          "label": "Period",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_period"
+        },
+        {
+          "key": "accruedAmount",
+          "label": "Accrued Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_accruedAmount"
+        },
+        {
+          "key": "expectedAmount",
+          "label": "Expected Amount",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_expectedAmount"
+        }
+      ]
+    },
+    {
+      "id": "deduction",
+      "title": "Retail Deduction Validation Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for retail deduction validation.",
+      "table": "op_deduction",
+      "columns": [
+        {
+          "key": "deductionId",
+          "label": "Deduction ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_deductionId"
+        },
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_retailer"
+        },
+        {
+          "key": "reasonCode",
+          "label": "Reason Code",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_reasonCode"
+        },
+        {
+          "key": "deductionAmount",
+          "label": "Deduction Amount",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_deductionAmount"
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "title": "Proof-of-Performance Review Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for proof-of-performance review.",
+      "table": "op_proof",
+      "columns": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_promotion"
+        },
+        {
+          "key": "evidenceType",
+          "label": "Evidence Type",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Advertisement",
+            "Display",
+            "Price",
+            "POS sales"
+          ],
+          "dbKey": "data_evidenceType"
+        },
+        {
+          "key": "storeCount",
+          "label": "Store Count",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_storeCount"
+        },
+        {
+          "key": "evidenceNotes",
+          "label": "Evidence Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_evidenceNotes"
+        }
+      ]
+    },
+    {
+      "id": "claim",
+      "title": "Invalid Deduction Claim Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for invalid deduction claim.",
+      "table": "op_claim",
+      "columns": [
+        {
+          "key": "deductionId",
+          "label": "Deduction ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_deductionId"
+        },
+        {
+          "key": "invalidAmount",
+          "label": "Invalid Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_invalidAmount"
+        },
+        {
+          "key": "claimBasis",
+          "label": "Claim Basis",
+          "type": "textarea",
+          "required": true,
+          "dbKey": "data_claimBasis"
+        },
+        {
+          "key": "responseDue",
+          "label": "Response Due",
+          "type": "date",
+          "required": false,
+          "dbKey": "data_responseDue"
+        }
+      ]
+    },
+    {
+      "id": "forecast",
+      "title": "Promotion ROI Forecast Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for promotion roi forecast.",
+      "table": "op_forecast",
+      "columns": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_promotion"
+        },
+        {
+          "key": "baselineSales",
+          "label": "Baseline Sales",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_baselineSales"
+        },
+        {
+          "key": "expectedLift",
+          "label": "Expected Lift %",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_expectedLift"
+        },
+        {
+          "key": "funding",
+          "label": "Funding",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_funding"
+        }
+      ]
+    },
+    {
+      "id": "settlement",
+      "title": "Retailer Settlement Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for retailer settlement.",
+      "table": "op_settlement",
+      "columns": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_claimId"
+        },
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_retailer"
+        },
+        {
+          "key": "claimedAmount",
+          "label": "Claimed Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_claimedAmount"
+        },
+        {
+          "key": "settledAmount",
+          "label": "Settled Amount",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_settledAmount"
+        }
+      ]
+    },
+    {
+      "id": "post-event",
+      "title": "Post-Event Effectiveness Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for post-event effectiveness.",
+      "table": "op_post_event",
+      "columns": [
+        {
+          "key": "promotion",
+          "label": "Promotion",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_promotion"
+        },
+        {
+          "key": "actualSales",
+          "label": "Actual Sales",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_actualSales"
+        },
+        {
+          "key": "actualSpend",
+          "label": "Actual Spend",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_actualSpend"
+        },
+        {
+          "key": "learning",
+          "label": "Commercial Learning",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_learning"
+        }
+      ]
+    },
+    {
+      "id": "retailer-master",
+      "title": "Retailer and Customer Master",
+      "description": "Retailers, banners, deduction channels, payment terms, and ownership.",
+      "table": "op_retailer_master",
+      "columns": [
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_retailer"
+        },
+        {
+          "key": "banner",
+          "label": "Banner",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_banner"
+        },
+        {
+          "key": "paymentTerms",
+          "label": "Payment Terms",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_paymentTerms"
+        },
+        {
+          "key": "accountOwner",
+          "label": "Account Owner",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_accountOwner"
+        }
+      ]
+    },
+    {
+      "id": "sku-master",
+      "title": "Product and SKU Master",
+      "description": "Products, brands, categories, list prices, and promotional eligibility.",
+      "table": "op_sku_master",
+      "columns": [
+        {
+          "key": "sku",
+          "label": "SKU",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_sku"
+        },
+        {
+          "key": "product",
+          "label": "Product",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_product"
+        },
+        {
+          "key": "brand",
+          "label": "Brand",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_brand"
+        },
+        {
+          "key": "listPrice",
+          "label": "List Price",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_listPrice"
+        }
+      ]
+    },
+    {
+      "id": "promotion-calendar",
+      "title": "Promotion Calendar",
+      "description": "Events, retailers, products, mechanics, dates, and funding.",
+      "table": "op_promotion_calendar",
+      "columns": [
+        {
+          "key": "event",
+          "label": "Promotion Event",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_event"
+        },
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_retailer"
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_startDate"
+        },
+        {
+          "key": "plannedFunding",
+          "label": "Planned Funding",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_plannedFunding"
+        }
+      ]
+    },
+    {
+      "id": "deduction-library",
+      "title": "Deduction Reason Library",
+      "description": "Retailer reason codes, validation rules, documents, and dispute windows.",
+      "table": "op_deduction_library",
+      "columns": [
+        {
+          "key": "retailer",
+          "label": "Retailer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_retailer"
+        },
+        {
+          "key": "reasonCode",
+          "label": "Reason Code",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_reasonCode"
+        },
+        {
+          "key": "disputeDays",
+          "label": "Dispute Days",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_disputeDays"
+        },
+        {
+          "key": "requiredDocuments",
+          "label": "Required Documents",
+          "type": "textarea",
+          "required": true,
+          "dbKey": "data_requiredDocuments"
+        }
+      ]
+    }
+  ],
+  "domainProduct": {
+    "home": "Trade Promotion Recovery Operations",
+    "context": "Customer deductions, promotion accruals, proof of performance, dispute packages, and retailer recovery governance.",
+    "features": [
+      {
+        "id": "deduction-triage",
+        "title": "Customer Deduction Triage",
+        "description": "Normalize deduction reason, invoice, retailer, promotion, amount, dispute window, and ownership.",
+        "view": "deadline",
+        "modules": [
+          "deduction",
+          "deduction-library"
+        ],
+        "actions": [
+          {
+            "id": "accept-recovery",
+            "label": "Accept for Recovery",
+            "nextStatus": "Investigating",
+            "auditDetail": "Accepted a deduction for recovery based on value and evidence potential."
+          },
+          {
+            "id": "approve-valid",
+            "label": "Approve Valid Deduction",
+            "nextStatus": "Closed",
+            "auditDetail": "Approved deduction as contractually valid with supporting evidence."
+          }
+        ]
+      },
+      {
+        "id": "promo-accrual",
+        "title": "Promotion Accrual Reconciliation",
+        "description": "Reconcile planned funding, approved mechanics, shipment, scan, claims, payments, and remaining accrual.",
+        "view": "reconciliation",
+        "modules": [
+          "accrual",
+          "promotion-calendar"
+        ],
+        "actions": [
+          {
+            "id": "approve-trueup",
+            "label": "Approve Accrual True-Up",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved promotion accrual true-up and financial posting."
+          },
+          {
+            "id": "open-overclaim",
+            "label": "Open Overclaim Investigation",
+            "nextStatus": "Investigating",
+            "auditDetail": "Opened investigation for promotion claims exceeding supported performance."
+          }
+        ]
+      },
+      {
+        "id": "proof-performance",
+        "title": "Proof-of-Performance Validation",
+        "description": "Validate ad, display, scan, event dates, SKU scope, retailer execution, and contract requirements.",
+        "view": "evidence",
+        "modules": [
+          "proof",
+          "promotion-calendar"
+        ],
+        "actions": [
+          {
+            "id": "accept-proof",
+            "label": "Accept Performance Proof",
+            "nextStatus": "Approved",
+            "auditDetail": "Accepted proof of performance against promotion terms."
+          },
+          {
+            "id": "reject-proof",
+            "label": "Reject Insufficient Proof",
+            "nextStatus": "Review",
+            "auditDetail": "Rejected incomplete or out-of-period performance evidence."
+          }
+        ]
+      },
+      {
+        "id": "dispute-package",
+        "title": "Retailer Dispute Package",
+        "description": "Assemble contract, promotion, invoice, POD, scan, correspondence, and recovery narrative before the dispute deadline.",
+        "view": "evidence",
+        "modules": [
+          "claim",
+          "retailer-master"
+        ],
+        "actions": [
+          {
+            "id": "validate-package",
+            "label": "Validate Dispute Package",
+            "nextStatus": "Review",
+            "auditDetail": "Validated required retailer dispute documents and amount."
+          },
+          {
+            "id": "submit-retailer",
+            "label": "Submit Retailer Dispute",
+            "nextStatus": "Approved",
+            "auditDetail": "Submitted a controlled deduction dispute before deadline."
+          }
+        ]
+      },
+      {
+        "id": "retailer-scorecard",
+        "title": "Retailer Recovery Scorecard",
+        "description": "Track deduction rate, invalid claims, aging, win rate, cycle time, root causes, and recovered cash by retailer.",
+        "view": "board",
+        "modules": [
+          "post-event",
+          "retailer-master"
+        ],
+        "actions": [
+          {
+            "id": "assign-corrective-action",
+            "label": "Assign Retailer Corrective Action",
+            "nextStatus": "Investigating",
+            "auditDetail": "Assigned corrective action for recurring retailer deduction behavior."
+          },
+          {
+            "id": "close-root-cause",
+            "label": "Close Root Cause",
+            "nextStatus": "Approved",
+            "auditDetail": "Closed validated retailer root cause after sustained improvement."
+          }
+        ]
+      }
+    ]
+  },
+  "integrations": [
+    {
+      "id": "integration-1",
+      "name": "Trade promotion management",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-2",
+      "name": "Retailer portal",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-3",
+      "name": "ERP deductions",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-4",
+      "name": "POS sell-through",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-5",
+      "name": "Document repository",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    }
+  ],
+  "featureCount": 40,
+  "seededRecords": 300,
+  "demoUsers": 3,
+  "apiPort": 5518,
+  "dbName": "profit_ai_retail_trade_promotion_deduction_recovery"
+}
